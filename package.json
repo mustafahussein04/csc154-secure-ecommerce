@@ -1,0 +1,10 @@
+{
+  "name": "secure-ecommerce-app",
+  "version": "1.0.0",
+  "description": "Secure e-commerce web application for CSC154 group project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"No tests currently\" && exit 1"
+  },
+  "license": "MIT"
+}
