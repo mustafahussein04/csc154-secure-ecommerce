@@ -20,7 +20,7 @@ fi
 
 echo
 echo "=== Feeding the same 200-byte input to safe (16-byte buffer, strncpy) ==="
-"$DIR/safe" "$LONG_INPUT”a
+"$DIR/safe" "$LONG_INPUT"
 SAFE_EXIT=$?
 if [ "$SAFE_EXIT" -eq 0 ]; then
   echo "safe exited 0 -- input was truncated safely, no overflow occurred."
