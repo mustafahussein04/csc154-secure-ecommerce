@@ -1,3 +1,5 @@
+const helmet = require('helmet');
+
 const helmetMiddleware = helmet({
   contentSecurityPolicy: {
     directives: {
@@ -11,3 +13,5 @@ const helmetMiddleware = helmet({
   },
   hsts: { maxAge: 31536000, includeSubDomains: true }
 });
+
+module.exports = helmetMiddleware;

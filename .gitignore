@@ -1,0 +1,8 @@
+node_modules/
+data/*.db
+certs/*.pem
+memory-safety/vulnerable
+memory-safety/safe
+memory-safety/*.o
+*.log
+.DS_Store
