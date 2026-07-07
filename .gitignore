@@ -1,5 +1,5 @@
 node_modules/
-data/*.db
+data/
 certs/*.pem
 memory-safety/vulnerable
 memory-safety/safe
