@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffer — Secure Storefront</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/index.html" class="brand"><span class="mark"></span>Coffer</a>
+    <div class="nav-links">
+      <a href="/index.html" class="active">Home</a>
+      <a href="/products.html">Products</a>
+      <a href="/checkout.html">Checkout</a>
+      <a href="/login.html">Log in</a>
+      <a href="/register.html">Register</a>
+    </div>
+  </nav>
+  <div class="status-strip state-guest" id="status-strip">
+    <span class="dot"></span><span>checking session…</span>
+  </div>
+
+  <main>
+    <p class="eyebrow">Defense-in-depth demo</p>
+    <h1>Every transaction here<br />is locked, verified, checked.</h1>
+    <p class="lede">Coffer is a small storefront built to prove a point: registration,
+      login, browsing, and checkout can run end-to-end without a single
+      unverified byte in transit or at rest. Look at the strip above — that's
+      not decoration, that's the actual session state, live.</p>
+
+    <div style="display:flex; gap:0.8rem; margin: 1.6rem 0 2.5rem; max-width: 340px;">
+      <button onclick="window.location.href='/register.html'">Create account</button>
+      <button class="secondary" onclick="window.location.href='/products.html'">Browse products</button>
+    </div>
+
+    <hr class="divider" />
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <div class="card boxed">
+        <span class="badge verified">TLS</span>
+        <h3 style="margin-top:0.8rem;">Encrypted in transit</h3>
+        <p style="font-size:0.88rem;">Every page is served over HTTPS via a locally-signed
+          certificate authority — no exceptions, no plain HTTP fallback.</p>
+      </div>
+      <div class="card boxed">
+        <span class="badge verified">HASHED</span>
+        <h3 style="margin-top:0.8rem;">Credentials at rest</h3>
+        <p style="font-size:0.88rem;">Passwords are hashed before they ever touch the
+          database. Nothing plaintext is stored, ever.</p>
+      </div>
+      <div class="card boxed">
+        <span class="badge verified">RBAC</span>
+        <h3 style="margin-top:0.8rem;">Role isolation</h3>
+        <p style="font-size:0.88rem;">Buyers, merchants, and admins are strictly separated —
+          crossing that line gets you a 403, not a workaround.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

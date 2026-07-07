@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Coffer</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/index.html" class="brand"><span class="mark"></span>Coffer</a>
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/products.html">Products</a>
+      <a href="/login.html">Log in</a>
+    </div>
+  </nav>
+  <div class="status-strip state-guest" id="status-strip">
+    <span class="dot"></span><span>checking session…</span>
+  </div>
+
+  <main style="max-width: 460px;">
+    <p class="eyebrow">Join</p>
+    <h2>Create an account</h2>
+    <p style="margin-bottom:1.6rem;">Choose <strong>buyer</strong> to shop, or
+      <strong>merchant</strong> to list products. Admin roles aren't
+      self-service — they're provisioned separately.</p>
+
+    <div class="card boxed">
+      <form id="register-form">
+        <label>
+          <span class="label-text">Username</span>
+          <input type="text" id="username" required minlength="3" maxlength="32" pattern="[a-zA-Z0-9_]+" autocomplete="username" />
+        </label>
+        <label>
+          <span class="label-text">Email</span>
+          <input type="email" id="email" required autocomplete="email" />
+        </label>
+        <label>
+          <span class="label-text">Password</span>
+          <input type="password" id="password" required minlength="8" autocomplete="new-password" />
+        </label>
+        <label>
+          <span class="label-text">Account type</span>
+          <select id="role">
+            <option value="buyer">Buyer</option>
+            <option value="merchant">Merchant</option>
+          </select>
+        </label>
+        <button type="submit">Register</button>
+        <p class="msg" id="msg"></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/main.js"></script>
+  <script>
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('msg');
+      try {
+        const body = {
+          username: document.getElementById('username').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value,
+          role: document.getElementById('role').value
+        };
+        const data = await apiFetch('/api/auth/register', { method: 'POST', body: JSON.stringify(body) });
+        showMessage(msg, `Registered as ${data.role}. Redirecting…`);
+        setTimeout(() => window.location.href = '/products.html', 800);
+      } catch (err) {
+        showMessage(msg, err.message, true);
+      }
+    });
+  </script>
+</body>
+</html>
