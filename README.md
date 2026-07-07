@@ -1,4 +1,4 @@
-# CSC154 Secure E-Commerce (Coffer)
+# CSC154 Secure E-Commerce (Buy me a drink)
 
 An in-depth e-commerce demo built for CSC154: HTTPS via a locally-trusted CA,
 bcrypt-hashed credentials, parameterized SQL everywhere, a standalone memory-safety
