@@ -10,9 +10,11 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-if (fs.existsSync(dbPath)) {
-  fs.unlinkSync(dbPath);
-  console.log('Removed existing data/app.db — starting fresh.');
+for (const suffix of ['', '-shm', '-wal']) {
+  const p = dbPath + suffix;
+  if (fs.existsSync(p)) {
+    fs.unlinkSync(p);
+  }
 }
 
 const db = new Database(dbPath);
